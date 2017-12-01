@@ -11,8 +11,19 @@ class EmailParser
   end
 
   def parse
-    split_emails = @emails.split(/[,]/)
-    parsed_emails = split_emails.collect {|email| email.strip}
+    # split_emails = @emails.split(/[,]/)
+    # parsed_emails = split_emails.collect {|email| email.strip}
+    # parsed_emails.uniq
+
+    comma_split_emails = []
+    space_split_emails = []
+
+    comma_split_emails = emails.split(/[,]/)
+    space_split_emails = comma_split_emails.collect do |email|
+       email.split
+    end
+
+    parsed_emails = space_split_emails.flatten
     parsed_emails.uniq
   end
 end
