@@ -12,6 +12,7 @@ class EmailParser
 
   def parse
     parsed_emails = @emails.split(/[,]/)
+    parsed_emails.collect {|email| email.strip}
     parsed_emails.uniq
   end
 end
